@@ -35,8 +35,15 @@ manifest tagged `${REGISTRY}/${APP_NAME}:latest` via
 ./run.sh
 ```
 Pulls `cr.quud.net/claude-sandbox:latest` and bind-mounts `$(pwd)` (not
-`./workspace`) to `/workspace` — this is the "install once, use anywhere"
-entry point, as opposed to the compose-based dev loop above.
+`./workspace`) to the *same absolute path* inside the container — not a fixed
+`/workspace` — this is the "install once, use anywhere" entry point, as
+opposed to the compose-based dev loop above. Mounting at the real host path
+(rather than a fixed `/workspace`) matters because Claude Code keys its
+per-project session history/memory (`~/.claude/projects/<encoded-cwd>`) off
+the container's cwd path; a fixed `/workspace` would make every project run
+through `run.sh` collide under the same key despite `~/claude-sandbox`
+(mounted to `/home/ubuntu`) being shared across all of them for auth
+persistence.
 
 ## Architecture
 
