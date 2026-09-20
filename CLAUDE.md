@@ -14,11 +14,11 @@ Claude Code can operate inside the container instead of directly on the host.
 **Local build + run (dev loop):**
 ```bash
 docker compose build
-docker compose run --rm claude_sandbox
+docker compose run --rm claude-sandbox
 ```
 Uses `./workspace` (bind-mounted to `/workspace`) as the project Claude Code
 operates on. Claude Code auth/config persists across runs via the
-`claude_config` named volume.
+`claude-config` named volume.
 
 **Multi-arch build & publish** (`Taskfile.yaml`, requires `task`):
 ```bash

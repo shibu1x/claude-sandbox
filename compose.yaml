@@ -1,5 +1,5 @@
 services:
-  claude_sandbox:
+  claude-sandbox:
     image: ${REGISTRY}/claude-sandbox:latest
     stdin_open: true
     tty: true
@@ -8,7 +8,7 @@ services:
       # Mount the project you want Claude Code to work on
       - ./workspace:/workspace
       # Persist Claude Code auth/config between container runs
-      - claude_config:/home/ubuntu/.claude
+      - claude-config:/home/ubuntu/.claude
 
 volumes:
-  claude_config:
+  claude-config:

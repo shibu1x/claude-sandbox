@@ -10,7 +10,7 @@ WORKSPACE_DIR="$1"
 
 docker run --rm -it \
     -v "$(cd "$WORKSPACE_DIR" && pwd):/workspace" \
-    -v ~/claude_sandbox:/home/ubuntu \
+    -v ~/claude-sandbox:/home/ubuntu \
     -w /workspace \
     -e TZ=Asia/Tokyo \
     cr.quud.net/claude-sandbox:latest
